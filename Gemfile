@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'bootstrap-sass', '2.3.0.1'
-gem 'shibboleth-rails', '~> 0.7.1'
 gem 'devise', '2.2.3'
+gem 'simple_form', '2.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
