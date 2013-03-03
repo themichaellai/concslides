@@ -1,3 +1,13 @@
 // Place all the styles related to the presentations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* button */
+button.controller {
+  width: 200px;
+  height: 100px;
+  font-size: 30pt;
+}
+button.left {
+  float:right;
+}
