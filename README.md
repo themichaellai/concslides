@@ -1,4 +1,4 @@
-# Class Note Collaboration
+# ConcSlides 
 
 ## Installing
 
@@ -6,7 +6,7 @@ Make sure you have [git](http://git-scm.com/book/en/Getting-Started-Installing-G
 
 Clone the repository and `cd` into the directory
 ```bash
-git clone git@github.com:themichaellai/notecolab.git
+git clone git@github.com:themichaellai/concslides.git
 ```
 
 Install bundler (skip this step if you're on Windows, I think railsinstaller installs it for you)
