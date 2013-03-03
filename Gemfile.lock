@@ -91,6 +91,7 @@ GEM
     rdiscount (2.0.7.1)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.3)
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -128,6 +129,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   rails_config
   rdiscount (~> 2.0.7.1)
+  redis (~> 3.0.3)
   sass-rails (~> 3.2.3)
   simple_form (= 2.1.0)
   sqlite3

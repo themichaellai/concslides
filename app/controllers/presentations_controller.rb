@@ -58,6 +58,7 @@ class PresentationsController < ApplicationController
 
   def present
     @presentation = Presentation.find(params[:id])
+    $redis.set("presentation:#{@presentation.id}", 0) # set slide position
     if params[:view] =='pub'
       render 'presentations/pub', layout: "presentation"
       return

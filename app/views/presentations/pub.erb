@@ -1,1 +1,36 @@
 <%= @presentation.render_presentation.html_safe %>
+<script src = "<%= Settings.socket_url %>/socket.io/socket.io.js" type="text/javascript"></script>
+<%= javascript_include_tag "slide_control" %>
+<script type="text/javascript">
+  var room = <%= params[:id] %>;
+  var socket = io.connect(window.location.hostname + ':3001');
+  socket.emit('joinRoom', {room_id: room});
+  socket.on('message', function (data) {
+    console.log(data);
+  });
+
+  socket.on('changeSlide', function (data) {
+    console.log('move slide to index: ' + data['slide'])
+    jumpSlide(data['slide']);
+  });
+
+  var slides = $('.slide');
+  slides.hide();
+  slides.first().show();
+
+  $(document).keydown( function(e) {
+
+    // right arrow
+    if (e.which == 39) {
+      moveSlide(slides, true, function(new_index) {
+        socket.emit('movedSlide', {slide: new_index, room_id: room})
+      });
+    }
+    else if (e.which == 37) {
+      moveSlide(slides, false, function(new_index) {
+        socket.emit('movedSlide', {slide: new_index})
+      });
+    }
+  });
+
+</script>

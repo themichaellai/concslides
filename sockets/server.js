@@ -2,9 +2,19 @@ var io = require('socket.io').listen(3001);
 
 io.configure( function() {
   io.set("transports", ["xhr-polling"]);
-  io.set("polling duration", 10);
+  io.set("polling duration", 100);
 });
 
 io.sockets.on('connection', function (socket) {
-  io.sockets.emit('hi');
-})
+  console.log('connected')
+  socket.emit('message', {message: 'hi'});
+  socket.on('joinRoom', function(data) {
+    socket.join(data['room_id']);
+    io.sockets.in(data['room_id']).emit('message', 'someone joined');
+  });
+  socket.on('movedSlide', function (data) {
+    console.log('moved');
+    io.sockets.in(data['room_id']).emit('changeSlide', {slide: data['slide']});
+  });
+});
+

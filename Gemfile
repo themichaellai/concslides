@@ -6,6 +6,7 @@ gem 'devise', '2.2.3'
 gem 'simple_form', '2.1.0'
 gem 'rdiscount', '~> 2.0.7.1'
 gem 'rails_config'
+gem 'redis', '~> 3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

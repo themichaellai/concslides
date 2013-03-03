@@ -1,7 +1,7 @@
 //= require jquery
 
 var counter = 0;
-var moveSlide = function (slides, moveForward) {
+var moveSlide = function (slides, moveForward, callback) {
   slides.eq(counter).hide();
   if (moveForward) {
     counter++;
@@ -10,26 +10,26 @@ var moveSlide = function (slides, moveForward) {
     }
   } else {
     counter--;
-    if (counter <= 0) {
+    if (counter < 0) {
       counter = 0;
     }
   }
   slides.eq(counter).show();
+  callback(counter);
+}
+var jumpSlide = function (jumpTo) {
+  var slides = $('.slide');
+  slides.eq(counter).hide();
+  counter = jumpTo
+  if (counter >= slides.length) {
+    counter = slides.length - 1;
+  }
+  if (counter < 0) {
+    counter = 0;
+  }
+  slides.eq(counter).show();
 }
 window.onload = function () {
-  var slides = $('.slide');
-  slides.hide();
-  slides.first().show();
-
-  $(document).keydown( function(e) {
-    // right arrow
-    if (e.which == 39) {
-      moveSlide(slides, true);
-    }
-    else if (e.which == 37) {
-      moveSlide(slides, false);
-    }
-  });
 }
 var controllerMove = function(moveForward) {
   var slides = $('.slide');
