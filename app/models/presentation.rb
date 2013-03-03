@@ -11,12 +11,15 @@ class Presentation < ActiveRecord::Base
     html.gsub!(/<h1>/) do |h1|
       output = ''
       unless first
-        output += "\n</div>\n"
+        output += "\n</div>\n</div>"
       end
       first = false if first
 
       output += "<div class=\"slide\">\n" + h1
       output
+    end
+    html.gsub!(/<\/h1>/) do |h1close|
+      h1close + "<div class=\"slide-body\">"
     end
     #puts "BODY:\n #{body} #{body.class}"
     html + '</div>'
