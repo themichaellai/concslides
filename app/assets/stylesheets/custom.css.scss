@@ -13,11 +13,10 @@
   margin-right: 10px;
   font-size: 20px;
   padding-top: 10px;
+  &:hover{
+    text-decoration: none;
+  }
 }
-#logo:hover {
-  text-decoration: none;
-}
-
 /* form */
 textarea {
   width: initial;
