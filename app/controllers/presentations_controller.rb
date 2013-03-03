@@ -6,6 +6,9 @@ class PresentationsController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  def controller
+  end
 
   def index
     if user_signed_in?

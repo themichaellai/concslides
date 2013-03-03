@@ -31,3 +31,7 @@ window.onload = function () {
     }
   });
 }
+var controllerMove = function(moveForward) {
+  var slides = $('.slide');
+  moveSlide(slides, moveForward);
+}
