@@ -6,8 +6,12 @@ class PresentationsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def controller
+    presentation = Presentation.find(params[:id])
+    unless user_signed_in? and current_user.id == presentation.user.id
+      redirect_to user_presentation_pub_path(view: 'pub')
+    end
   end
 
   def index
