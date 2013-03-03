@@ -27,7 +27,7 @@ class PresentationsController < ApplicationController
     @presentation.user = current_user
     if @presentation.save
       flash[:notice] = 'Created presentation'
-      redirect_to user_presentations(current_user)
+      redirect_to user_presentations_path(current_user)
     else
       flash[:notice] = 'Could not create presentation'
       redirect_to new_presentations_path(current_user)

@@ -14,27 +14,31 @@
 
   var slides = $('.slide');
   slides.hide();
-  slides.first().fadeIn();
+  slides.first().show();
 
   socket.on('changeSlide', function (data) {
     console.log('move slide to index: ' + data['slide'])
     jumpSlide(data['slide']);
   });
 
-  //socket.on('adjSlide', function (data) {
-  //  console.log('move slide in direction: ' + data['direction']) // true or false
-  //  moveSlide(slides, data['direction'], function(res) {});
-  //});
+  socket.on('adjSlide', function (data) {
+    console.log('move slide in direction: ' + data['direction']) // true or false
+    moveSlide(slides, data['direction'], function(new_index) {
+      socket.emit('broadcastSlide', {slide: new_index, room_id: room});
+    });
+  });
 
   $(document).keydown( function(e) {
 
     // right arrow
     if (e.which == 39) {
       moveSlide(slides, true, function(new_index) {
+        socket.emit('movedSlide', {slide: new_index, room_id: room})
       });
     }
     else if (e.which == 37) {
       moveSlide(slides, false, function(new_index) {
+        socket.emit('movedSlide', {slide: new_index})
       });
     }
   });

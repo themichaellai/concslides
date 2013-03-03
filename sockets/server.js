@@ -19,5 +19,8 @@ io.sockets.on('connection', function (socket) {
   socket.on('adjSlide', function (data) {
     io.sockets.in(data['room_id']).emit('adjSlide', data);
   });
+  socket.on('broadcastSlide', function(data) {
+    io.sockets.in(data['room_id']).emit('changeSlide', {slide: data['slide']});
+  });
 });
 
