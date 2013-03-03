@@ -4,9 +4,9 @@ Notecolab::Application.routes.draw do
 
   root to: 'StaticPages#home'
 
-  resources :presentations, only: [:new]
   resources :users do
-    resources :presentations, except: [:new]
+    resources :presentations
+    match '/presentations/:id/view' => 'presentations#present', as: :presentation_pub
   end
 
 end

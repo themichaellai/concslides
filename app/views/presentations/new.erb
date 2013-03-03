@@ -1,5 +1,5 @@
 <div class="span8">
-<%= simple_form_for @presentation do |f| %>
+<%= simple_form_for @presentation, url: url_for(action: :create, controller: :presentations)  do |f| %>
   <%= f.input :title %>
   <%= f.input :body, input_html: {cols: 100} %>
   <%= f.button :submit %>
