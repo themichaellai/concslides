@@ -18,6 +18,9 @@
   var slides = $('.slide');
   slides.hide();
   slides.first().fadeIn();
+  <% if @init_slide %>
+  jumpSlide(<%= @init_slide %>);
+  <% end %>
 
   socket.on('changeSlide', function (data) {
     if ($('#auto-change').is(":checked")) {

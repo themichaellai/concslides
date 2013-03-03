@@ -1,4 +1,6 @@
 var io = require('socket.io').listen(3001);
+var redis = require('redis'),
+  client = redis.createClient();
 
 io.configure( function() {
   io.set("transports", ["xhr-polling"]);
@@ -15,12 +17,14 @@ io.sockets.on('connection', function (socket) {
   socket.on('movedSlide', function (data) {
     console.log('moved');
     io.sockets.in(data['room_id']).emit('changeSlide', {slide: data['slide']});
+    client.set('presentation:' + data['room_id'], data['slide'])
   });
   socket.on('adjSlide', function (data) {
     io.sockets.in(data['room_id']).emit('adjSlide', data);
   });
   socket.on('broadcastSlide', function(data) {
     io.sockets.in(data['room_id']).emit('changeSlide', {slide: data['slide']});
+    client.set('presentation:' + data['room_id'], data['slide'])
   });
 });
 

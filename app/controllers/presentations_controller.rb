@@ -59,8 +59,9 @@ class PresentationsController < ApplicationController
 
   def present
     @presentation = Presentation.find(params[:id])
-    $redis.set("presentation:#{@presentation.id}", 0) # set slide position
+    @init_slide = $redis.get("presentation:#{@presentation.id}")
     if params[:view] =='pub'
+      puts "INIT_SLIDE: #{@init_slide}"
       render 'presentations/pub', layout: "presentation"
       return
     elsif params[:view] == 'pres'
@@ -68,9 +69,11 @@ class PresentationsController < ApplicationController
         redirect_to user_presentation_pub_path(view: 'pub')
         return
       end
+      $redis.set("presentation:#{@presentation.id}", 0) # set slide position
       render 'presentations/pres', layout: "presentation"
       return
     else
+      puts "INIT_SLIDE: #{@init_slide}"
       redirect_to user_presentation_pub_path(view: 'pub')
     end
   end
