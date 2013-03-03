@@ -1,3 +1,4 @@
 <%= stylesheet_link_tag "pres_view" %>
-<%= javascript_include_tag "pres_view" %>
+<%= javascript_include_tag "slide_control" %>
+<script src = "<%= Settings.socket_url %>/socket.io/socket.io.js" type=text/javascript"></script>
 <%= yield %>
