@@ -1,5 +1,23 @@
-<div class="span12">
-  <% @presentations.each do |presentation| %>
-    <%= link_to presentation.title, user_presentation_path(presentation.user, presentation) %><br />
+<div class="span8">
+  <h1>
+    <% if current_user == @user %>
+      Your Presentations
+    <% else %>
+      <%= @user.email %>'s Presentations
+    <% end %>
+  </h1>
+
+  <ul>
+    <% @presentations.each do |presentation| %>
+      <li>
+        <%= link_to presentation.title, user_presentation_path(presentation.user, presentation) %><br />
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="span4">
+  <h2>Actions</h2>
+  <% if current_user == @user %>
+    <%= link_to 'New Presentation', new_user_presentation_path(current_user) %>
   <% end %>
 </div>

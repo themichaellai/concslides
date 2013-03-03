@@ -4,11 +4,11 @@
   <%= @presentation.render_presentation.html_safe %>
 </div>
 <div class="span4">
-  <h1>Views</h1>
-  <hr />
+  <h2>Views</h2>
   <%= link_to 'Lecture View', user_presentation_pub_path(view: 'pres') %> <br />
   <%= link_to 'Public View', user_presentation_pub_path(view: 'pub') %>
-  <hr />
+  <h2>Actions</h2>
+  <%= link_to 'New Presentation', new_user_presentation_path(current_user) %><br />
   <%= link_to 'Edit Presentation', edit_user_presentation_path(current_user, @presentation) %><br />
   <%= link_to 'Control Presentation', user_presentation_control_path(current_user, @presentation) %>
 </div>
