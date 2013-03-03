@@ -1,4 +1,13 @@
-<div class="span12">
-  <h1> Outline </h1>
+<div class="span8">
+  <h1>Outline</h1>
+  <hr />
   <%= @presentation.render_presentation.html_safe %>
+</div>
+<div class="span4">
+  <h1>Views</h1>
+  <hr />
+  <%= link_to 'Lecture View', user_presentation_pub_path(view: 'pres') %> <br />
+  <%= link_to 'Public View', user_presentation_pub_path(view: 'pub') %>
+  <hr />
+  <%= link_to 'Edit Presentation', edit_user_presentation_path(current_user, @presentation) %>
 </div>

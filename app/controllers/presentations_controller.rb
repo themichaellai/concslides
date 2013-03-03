@@ -27,10 +27,29 @@ class PresentationsController < ApplicationController
     end
   end
 
+  def edit
+    @presentation = Presentation.find(params[:id])
+    unless @presentation and user_signed_in? and current_user.id == @presentation.user.id
+      redirect_to user_presentation_pub_path(view: 'pub')
+    end
+  end
+
+  def update
+    @presentation = Presentation.find(params[:id])
+    if @presentation.update_attributes(params[:presentation])
+      flash[:success] = 'Updated presentation'
+      redirect_to user_presentation_path(current_user, @presentation)
+    else
+      flash[:error] = 'Failed to update'
+      redirect_to edit_user_presentation_path(current_user, @presentation)
+    end
+  end
+
+
   def show
     @presentation = Presentation.find(params[:id])
     if current_user != @presentation.user
-      # TODO: if current_user != presentation.user, then redirect to public view, else render normal page
+      redirect_to user_presentation_pub_path(view: 'pub')
     end
   end
 
@@ -38,8 +57,14 @@ class PresentationsController < ApplicationController
     @presentation = Presentation.find(params[:id])
     if params[:view] =='pub'
       render 'presentations/pub', layout: "presentation"
+      return
     elsif params[:view] == 'pres'
+      unless user_signed_in? and current_user == @presentation.user
+        redirect_to user_presentation_pub_path(view: 'pub')
+        return
+      end
       render 'presentations/pres', layout: "presentation"
+      return
     else
       redirect_to user_presentation_pub_path(view: 'pub')
     end
