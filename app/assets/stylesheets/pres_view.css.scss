@@ -18,3 +18,20 @@ img {
   margin-right: auto;
   display: block;
 }
+#bottomright {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+#bottomright label {
+  opacity: 0;
+  margin-right: 5px;
+}
+#bottomright input[type="checkbox"] {
+  margin: 0px;
+}
+#bottomright:hover label {
+  opacity: 1;
+  -webkit-transition: all .25s ease-in-out;
+  transition: all .1s ease-in-out;
+}

@@ -1,4 +1,7 @@
 <%= @presentation.render_presentation.html_safe %>
+<div id="bottomright">
+  <label for="auto-change">Auto Change?</label><input id="auto-change" type="checkbox" checked=1 />
+</div>
 <script src = "http://<%= request.host.to_s %>:3001/socket.io/socket.io.js" type="text/javascript"></script>
 <%= javascript_include_tag "slide_control" %>
 <script type="text/javascript">
@@ -17,14 +20,11 @@
   slides.first().fadeIn();
 
   socket.on('changeSlide', function (data) {
-    console.log('move slide to index: ' + data['slide'])
-    jumpSlide(data['slide']);
+    if ($('#auto-change').is(":checked")) {
+      console.log('move slide to index: ' + data['slide'])
+      jumpSlide(data['slide']);
+    }
   });
-
-  //socket.on('adjSlide', function (data) {
-  //  console.log('move slide in direction: ' + data['direction']) // true or false
-  //  moveSlide(slides, data['direction'], function(res) {});
-  //});
 
   $(document).keydown( function(e) {
 
