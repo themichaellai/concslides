@@ -1,0 +1,5 @@
+<div class="span12">
+  <% @presentations.each do |presentation| %>
+    <%= link_to presentation.title, user_presentation_path(current_user, presentation) %><br />
+  <% end %>
+</div>

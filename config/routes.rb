@@ -4,6 +4,9 @@ Notecolab::Application.routes.draw do
 
   root to: 'StaticPages#home'
 
-  resource :presentations
+  resources :presentations, only: [:new]
+  resources :users do
+    resources :presentations, except: [:new]
+  end
 
 end
