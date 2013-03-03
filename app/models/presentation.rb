@@ -22,6 +22,6 @@ class Presentation < ActiveRecord::Base
       h1close + "<div class=\"slide-body\">"
     end
     #puts "BODY:\n #{body} #{body.class}"
-    html + '</div>'
+    html + '</div></div>'
   end
 end
