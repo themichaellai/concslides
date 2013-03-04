@@ -1,31 +1,41 @@
-# ConcSlides 
+# ConcSlides aka "YoloLana"
+# YoloLana
+![yolollama](http://i.imgur.com/xluLYLM.jpg "Yolo Llama")
 
-## Installing
+# What is a YoloLana anyways?
+- Slideshow creation tool
+  - Simple
+    - Uses Markdown to generate slides
+  - Can use any editor you want
+- Inspired by laziness
 
-Make sure you have [git](http://git-scm.com/book/en/Getting-Started-Installing-Git), [ruby, and rails](http://railsinstaller.org/) installed.
+# What is a YoloLana anyways?
+- Slideshow presentation tool
+  - Slides change on viewer's screen as the presenter's slides do
+  - Allows viewers to review slides at own pace as well
 
-Clone the repository and `cd` into the directory
-```bash
-git clone git@github.com:themichaellai/concslides.git
-```
+# Edit Page
+![Edit Page](http://i.imgur.com/buzIwRN.png)
 
-Install bundler (skip this step if you're on Windows, I think railsinstaller installs it for you)
-```bash
-gem install bundle
-```
-Install all required gems
-```bash
-bundle install --without-production
-```
+# Edit Page
+<pre>
+# YoloLana
+![yolollama](http://i.imgur.com/xluLYLM.jpg "Yolo Llama")
 
-Initialize database
-```bash
-rake db:migrate
-```
+# What is a YoloLana anyways?
+- Slideshow creation tool
+  - Simple
+    - Uses Markdown to generate slides
+  - Can use any editor you want
 
-Run the server
-```bash
-rails s
-```
+# What is a YoloLana anyways?
+- Slideshow presentation tool
+  - Slides change on viewer's screen as the presenter's slides do
+  - Allows viewers to review slides at own pace as well
+</pre>
 
-Point your browser to `localhost:3000`
+# Mobile Interface
+- Allows presenter to change slides from phone
+
+# Mobile Interface
+![Mobile Interface](https://dl.dropbox.com/u/2091349/pictures/mobile.png)
